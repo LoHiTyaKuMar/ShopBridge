@@ -1,0 +1,23 @@
+Please read the following about the project description:
+
+>> I've used Angular 9 as a frontend and ASP.NET WebAPI as backend using C# language.
+>> Used EntityFramework as ORM, And used LINQ queries to fetch data from database repository.
+>> The solution contains the Angular app named as "ClientApp".
+
+Following is the track of how long I spent on the implementation of each of the
+01. Backend functionality. (4 hours)
+02. Frontend functionality. (4 hours)
+03. Frontend presentational aspects (styling, DOM, etc if applying for a UI or Fullstack Role). (1 hour) 
+04. Backend – Frontend Integration. (2 hours)
+05. Unit Test Coverage Deployment. (2 hours)
+
+Please follow the below link to reach the test solution:-
+https://github.com/LoHiTyaKuMar/ShopBridge
+
+Please read the following points for installing a solution on local:-
+01. The solution contains the database script file in the folder named as "DatabaseQueries" and the file named as "ShopBridge_Database_Script.sql" inside it.
+02. Please run the script in SQL Server to create the database.
+03. Next step is to change the connection string and build the project.
+04. Now Run the solution and Angular app inside the folder "ClientApp".
+
+Please let me know if you have any questions. I'll be happy to help you.
