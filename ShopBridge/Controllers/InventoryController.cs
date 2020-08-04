@@ -1,8 +1,8 @@
 ﻿using ShopBridge.IRepository;
 using ShopBridge.Models;
-using ShopBridge.Repository;
-using System.Web.Http;
-using System.Web.ModelBinding;
+using ShopBridge.Repository; 
+using System.Linq;
+using System.Web.Http; 
 
 namespace ShopBridge.Controllers
 {
@@ -10,7 +10,7 @@ namespace ShopBridge.Controllers
     public class InventoryController : ApiController
     {
         private readonly IInventoryRepository _inventoryRepository;
-        public InventoryController() { _inventoryRepository = new InventoryRepository(); }
+        public InventoryController() { _inventoryRepository = new InventoryRepository(); } 
 
         [HttpGet]
         [Route("GetInventories")]
@@ -21,14 +21,18 @@ namespace ShopBridge.Controllers
 
         [HttpPost]
         [Route("CreateInventory")]
-        public IHttpActionResult CreateInventory([Form]InventoryModel model)
+        public IHttpActionResult CreateInventory(InventoryModel model)
         {
             if (ModelState.IsValid)
             {
                 return Ok(_inventoryRepository.CreateInventory(model));
             }
-
-            return BadRequest("Name is required!");
+            else
+            {
+                return BadRequest(string.Join(", ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage)));
+            } 
         }
 
         [HttpPost]

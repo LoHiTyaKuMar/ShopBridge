@@ -8,6 +8,7 @@ namespace ShopBridge.Models
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a price bigger than {1}")]
         public decimal Price { get; set; }
     }
 }

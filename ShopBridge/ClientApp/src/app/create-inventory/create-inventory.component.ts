@@ -13,6 +13,7 @@ import { RequestOptions } from '@angular/http';
 })
 export class CreateInventoryComponent implements OnInit { 
   isFormSubmitted : boolean = false;
+  erros : string = '';
   filesToUpload: Array<File>;
   selectedFileNames: string[] = [];
 
@@ -42,11 +43,15 @@ export class CreateInventoryComponent implements OnInit {
       price : this.newInventoryFormGroup.controls.price.value != '' ? this.newInventoryFormGroup.controls.price.value : 0
     };
 
-    this._service.createInventory(model).subscribe(items => { 
-      console.log(items);
-      this.isFormSubmitted = false;
-      this.dialog.getDialogById('createInventory').close();
-      window.location.reload();
-    });
-  } 
-}
+    this._service.createInventory(model).subscribe(
+      data =>  {  
+        this.isFormSubmitted = false;
+        this.dialog.getDialogById('createInventory').close();
+        window.location.reload(); 
+      },
+      error => { 
+          this.erros = error.error.message;
+       }
+    ); 
+    } 
+  }
